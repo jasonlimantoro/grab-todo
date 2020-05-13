@@ -1,7 +1,6 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require("dotenv-webpack");
 const path = require("./path");
 
 module.exports = {
@@ -29,12 +28,18 @@ module.exports = {
     rules: [
       { test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/ },
       {
-        test: /\.css$/i,
+        test: /\.(le|c|)ss$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: { auto: true },
+            },
+          },
+          "less-loader",
         ],
       },
     ],
