@@ -22,6 +22,7 @@
 	"keywords": [],
 	"devDependencies": {
 		"@babel/core": "^7.9.6",
+		"@babel/plugin-transform-runtime": "^7.9.6",
 		"@babel/preset-env": "^7.9.6",
 		"@babel/preset-react": "^7.9.4",
 		"@testing-library/jest-dom": "^5.5.0",
@@ -40,7 +41,7 @@
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb": "^18.1.0",
 		"eslint-config-airbnb-typescript": "^7.2.1",
-		"eslint-config-prettier": "^6.10.1",
+		"eslint-config-prettier": "^6.11.0",
 		"eslint-config-react-app": "^5.2.1",
 		"eslint-plugin-flowtype": "^4.7.0",
 		"eslint-plugin-import": "^2.20.2",
@@ -75,9 +76,12 @@
 		"webpack-merge": "^4.2.2"
 	},
 	"dependencies": {
+		"prop-types": "^15.7.2",
 		"react": "^16.13.1",
+		"react-common-util": "^1.0.5",
 		"react-dom": "^16.13.1",
 		"react-redux": "^7.2.0",
+		"react-router-dom": "^5.2.0",
 		"redux": "^4.0.5",
 		"redux-devtools-extension": "^2.13.8",
 		"redux-thunk": "^2.3.0",

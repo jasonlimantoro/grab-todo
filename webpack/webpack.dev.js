@@ -1,5 +1,4 @@
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const path = require("./path");
 
 module.exports = {
@@ -11,8 +10,10 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
     proxy: {
-      context: ["/api"],
-      target: "http://localhost:4000",
+      "/api": {
+        target: "http://localhost:8888/grab-todo/wp-json/grab-todo/v1",
+        pathRewrite: { "^/api": "" },
+      },
     },
   },
   plugins: [
