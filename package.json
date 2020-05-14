@@ -76,6 +76,7 @@
 		"webpack-merge": "^4.2.2"
 	},
 	"dependencies": {
+		"classnames": "^2.2.6",
 		"prop-types": "^15.7.2",
 		"react": "^16.13.1",
 		"react-common-util": "^1.0.5",
@@ -85,6 +86,7 @@
 		"redux": "^4.0.5",
 		"redux-devtools-extension": "^2.13.8",
 		"redux-thunk": "^2.3.0",
-		"reselect": "^4.0.0"
+		"reselect": "^4.0.0",
+		"uuid": "^8.0.0"
 	}
 }
