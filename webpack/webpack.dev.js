@@ -1,5 +1,6 @@
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const path = require("./path");
+const envs = require("../src/env");
 
 module.exports = {
   mode: "development",
@@ -11,7 +12,7 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       "/api": {
-        target: "http://localhost:8888/grab-todo/wp-json/grab-todo/v1",
+        target: envs.BACKEND_HOST,
         pathRewrite: { "^/api": "" },
       },
     },
