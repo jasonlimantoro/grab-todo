@@ -5,11 +5,29 @@
 //---------------------
 .btn {
   padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
 }
 .btn-gray {
   border: 1px @gray-100 solid;
-  border-radius: 0.25rem;
   &:hover {
     background-color: darken(#ffffff, 5%);
+  }
+}
+
+.btn-success {
+  background-color: @green-100;
+  border: 1px darken(@green-100, 10%) solid;
+  color: white;
+  &:hover {
+    background-color: darken(@green-100, 5%);
+  }
+}
+
+.btn-danger {
+  background-color: darken(@red-100, 10%);
+  border: 1px darken(@red-100, 10%) solid;
+  color: white;
+  &:hover {
+    background-color: darken(@red-100, 5%);
   }
 }

@@ -1,16 +1,22 @@
 /* eslint-disable react/jsx-curly-newline */
 import React from "react";
 import PropTypes from "prop-types";
+import cls from "classnames";
 
 function EditableTodo({ todo, onRemove, onComplete, onIncomplete }) {
   return (
-    <li>
+    <li style={{ backgroundColor: todo.completed ? "#efefef" : "white" }}>
       <p style={{ textDecoration: todo.completed ? "line-through" : "" }}>
         {todo.title}
       </p>
       <div style={{ display: "flex", alignItems: "center" }}>
         <button
           type="button"
+          className={cls("btn", {
+            "btn-danger": todo.completed,
+            "btn-success": !todo.completed,
+          })}
+          style={{ textTransform: "uppercase" }}
           onClick={() =>
             todo.completed ? onIncomplete(todo.id) : onComplete(todo.id)
           }
