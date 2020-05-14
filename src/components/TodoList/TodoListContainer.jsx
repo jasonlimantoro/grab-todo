@@ -7,6 +7,7 @@ import {
   removeTodo,
   completeTodo,
   incompleteTodo,
+  updateTodoTitle,
 } from "../../redux/actions/todos.action";
 import { selectTodos } from "../../redux/selectors/todos.selector";
 import TodoList from "./TodoList";
@@ -18,6 +19,7 @@ const TodoListContainer = ({
   todos,
   completeTodo,
   incompleteTodo,
+  updateTodoTitle,
 }) => {
   useEffect(() => {
     fetchTodos();
@@ -27,6 +29,7 @@ const TodoListContainer = ({
       todos={todos}
       onCreate={createTodo}
       onRemove={removeTodo}
+      onUpdate={updateTodoTitle}
       onComplete={completeTodo}
       onIncomplete={incompleteTodo}
     />
@@ -42,6 +45,7 @@ const mapDispatchToProps = {
   removeTodo,
   completeTodo,
   incompleteTodo,
+  updateTodoTitle,
 };
 
 TodoListContainer.propTypes = {
@@ -50,6 +54,7 @@ TodoListContainer.propTypes = {
   removeTodo: PropTypes.func.isRequired,
   completeTodo: PropTypes.func.isRequired,
   incompleteTodo: PropTypes.func.isRequired,
+  updateTodoTitle: PropTypes.func.isRequired,
   todos: PropTypes.array.isRequired,
 };
 

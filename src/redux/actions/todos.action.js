@@ -63,3 +63,7 @@ export const completeTodo = (id) => async (dispatch) => {
 export const incompleteTodo = (id) => async (dispatch) => {
   dispatch(updateTodo(id, { completed: "0" }));
 };
+
+export const updateTodoTitle = (id, title) => async (dispatch) => {
+  dispatch(updateTodo(id, { title }));
+};

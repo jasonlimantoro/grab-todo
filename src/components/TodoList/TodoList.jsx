@@ -4,7 +4,14 @@ import cls from "classnames";
 import styles from "./TodoList.module.less";
 import EditableTodo from "./EditableTodo";
 
-const TodoList = ({ todos, onCreate, onRemove, onComplete, onIncomplete }) => {
+const TodoList = ({
+  todos,
+  onCreate,
+  onRemove,
+  onComplete,
+  onIncomplete,
+  onUpdate,
+}) => {
   const [title, setTitle] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +48,7 @@ const TodoList = ({ todos, onCreate, onRemove, onComplete, onIncomplete }) => {
               onRemove={handleRemove}
               onComplete={onComplete}
               onIncomplete={onIncomplete}
+              onUpdate={onUpdate}
             />
           ))}
         </ul>
@@ -53,6 +61,7 @@ TodoList.propTypes = {
   todos: PropTypes.array.isRequired,
   onCreate: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
   onComplete: PropTypes.func.isRequired,
   onIncomplete: PropTypes.func.isRequired,
 };

@@ -1,14 +1,79 @@
 /* eslint-disable react/jsx-curly-newline */
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import cls from "classnames";
+import styles from "./EditableTodo.module.less";
 
-function EditableTodo({ todo, onRemove, onComplete, onIncomplete }) {
+function EditableTodo({ todo, onRemove, onComplete, onIncomplete, onUpdate }) {
+  const [editing, setEditing] = useState(false);
+  const [title, setTitle] = useState(todo.title);
+  const [error, setError] = useState(null);
+
+  const handleEdit = () => {
+    setEditing(true);
+    setTitle(todo.title);
+  };
+  const handleCancelEdit = () => {
+    setEditing(false);
+    setTitle("");
+    setError(null);
+  };
+
+  const handleUpdate = () => {
+    if (!title) {
+      setError(true);
+      return;
+    }
+    onUpdate(todo.id, title);
+    handleCancelEdit();
+  };
+
   return (
-    <li style={{ backgroundColor: todo.completed ? "#efefef" : "white" }}>
-      <p style={{ textDecoration: todo.completed ? "line-through" : "" }}>
-        {todo.title}
-      </p>
+    <li
+      className={cls({
+        [styles["completed-list"]]: todo.completed,
+      })}
+    >
+      {editing ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Edit todo"
+            className={cls({
+              [styles["error-input"]]: !!error,
+            })}
+          />
+          <button className="btn btn-gray" type="button" onClick={handleUpdate}>
+            Update
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleCancelEdit}
+          >
+            Cancel
+          </button>
+        </div>
+      ) : (
+        <p>
+          <button
+            onClick={handleEdit}
+            className={cls(styles.pointer, styles.title, {
+              [styles.strike]: todo.completed,
+            })}
+            type="button"
+          >
+            {todo.title}
+          </button>
+        </p>
+      )}
       <div style={{ display: "flex", alignItems: "center" }}>
         <button
           type="button"
@@ -46,6 +111,7 @@ EditableTodo.propTypes = {
   onRemove: PropTypes.func.isRequired,
   onComplete: PropTypes.func.isRequired,
   onIncomplete: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default EditableTodo;
