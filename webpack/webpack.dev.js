@@ -17,6 +17,6 @@ module.exports = {
     },
   },
   plugins: [
-    new BundleAnalyzerPlugin({ analyzerPort: 8888, openAnalyzer: false }),
+    new BundleAnalyzerPlugin({ analyzerPort: 9001, openAnalyzer: false }),
   ],
 };
