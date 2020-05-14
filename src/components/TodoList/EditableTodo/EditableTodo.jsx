@@ -65,9 +65,11 @@ function EditableTodo({ todo, onRemove, onComplete, onIncomplete, onUpdate }) {
         <p>
           <button
             onClick={handleEdit}
-            className={cls(styles.pointer, styles.title, {
+            className={cls(styles.pointer, {
               [styles.strike]: todo.completed,
+              [styles.title]: !todo.completed,
             })}
+            disabled={todo.completed}
             type="button"
           >
             {todo.title}
