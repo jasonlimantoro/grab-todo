@@ -39,3 +39,27 @@ export const removeTodo = (id) => async (dispatch) => {
     dispatch({ type: actionTypes.REMOVE_TODOS_FAILURE, payload: e.message });
   }
 };
+
+export const updateTodo = (id, data) => async (dispatch) => {
+  dispatch({ type: actionTypes.UPDATE_TODOS_BEGIN });
+  try {
+    await serviceRegistry.todos.update(id, data);
+    dispatch({
+      type: actionTypes.UPDATE_TODOS_SUCCESS,
+      payload: {
+        id,
+        ...data,
+      },
+    });
+  } catch (e) {
+    dispatch({ type: actionTypes.UPDATE_TODOS_FAILURE, payload: e.message });
+  }
+};
+
+export const completeTodo = (id) => async (dispatch) => {
+  dispatch(updateTodo(id, { completed: "1" }));
+};
+
+export const incompleteTodo = (id) => async (dispatch) => {
+  dispatch(updateTodo(id, { completed: "0" }));
+};

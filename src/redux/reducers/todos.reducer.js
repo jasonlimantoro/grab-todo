@@ -5,9 +5,11 @@ const initialState = {
   fetchError: null,
   createError: null,
   removeError: null,
+  updateError: null,
   fetchLoading: false,
   createLoading: false,
   removeLoading: false,
+  updateLoading: false,
 };
 
 export default function (state = initialState, action) {
@@ -29,6 +31,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         removeLoading: true,
+      };
+    }
+    case actionTypes.UPDATE_TODOS_BEGIN: {
+      return {
+        ...state,
+        updateLoading: true,
       };
     }
 
@@ -64,6 +72,21 @@ export default function (state = initialState, action) {
         ...state,
         createError: action.payload,
         createLoading: false,
+      };
+    }
+
+    case actionTypes.UPDATE_TODOS_SUCCESS: {
+      return {
+        ...state,
+        items: state.items.map((i) => {
+          if (i.id !== action.payload.id) return i;
+          return {
+            ...i,
+            ...action.payload,
+          };
+        }),
+        updateLoading: false,
+        updateError: null,
       };
     }
     case actionTypes.FETCH_TODOS_FAILURE: {

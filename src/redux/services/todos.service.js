@@ -19,4 +19,12 @@ export default class TodosService extends BaseService {
       method: "delete",
     });
   }
+
+  async update(id, data) {
+    return this.requestUtil.request({
+      path: `todos/${id}`,
+      method: "patch",
+      data,
+    });
+  }
 }
