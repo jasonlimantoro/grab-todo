@@ -5,6 +5,7 @@ Frontend repository for onboarding task
 ## Integrating Backend
 
 By default, Wordpress site must run on http://localhost:8888/grab-todo in order for this app to work.
+You can find the backend repository [here](https://github.com/jasonlimantoro/grab-todo-api-wp-plugin)
 
 ## Development
 
